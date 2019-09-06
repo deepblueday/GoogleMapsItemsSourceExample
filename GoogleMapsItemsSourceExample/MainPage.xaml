@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:clusteredMap="clr-namespace:Xamarin.Forms.GoogleMaps.Clustering;assembly=Xamarin.Forms.GoogleMaps.Clustering"
+    xmlns:gmap="clr-namespace:Xamarin.Forms.GoogleMaps;assembly=Xamarin.Forms.GoogleMaps"
+    x:Class="GoogleMapsItemsSourceExample.MainPage">
+
+    <StackLayout>
+
+        <!--Content Row 0-->
+        <clusteredMap:ClusteredMap
+            x:Name="Map"
+            Grid.Row="0"
+            Grid.Column="0"
+            VerticalOptions="FillAndExpand"
+            HasZoomEnabled="true"
+            HasRotationEnabled="false"
+            MyLocationEnabled="true"
+            ItemsSource="{Binding Locations}"
+            InitialCameraUpdate="0, 0, 1, 0, 0">
+            <clusteredMap:ClusteredMap.ItemTemplate>
+                <DataTemplate>
+                    <gmap:Pin Position="{Binding Position}"
+                              Address="{Binding Address}"
+                              Label="{Binding Description}" />
+                </DataTemplate>
+            </clusteredMap:ClusteredMap.ItemTemplate>
+
+        </clusteredMap:ClusteredMap>
+
+    </StackLayout>
+
+</ContentPage>
